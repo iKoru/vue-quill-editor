@@ -42,13 +42,11 @@ export default {
   data() {
     return {
       _options: {},
-      _content: "",
+      // _content: "",
       defaultOptions
     };
   },
   props: {
-    content: String,
-    value: String,
     disabled: {
       type: Boolean,
       default: false
@@ -108,13 +106,13 @@ export default {
 
         // Update model if text changes
         this.quill.on("text-change", (delta, oldDelta, source) => {
-          let html = this.$refs.editor.children[0].innerHTML;
-          const quill = this.quill;
-          const text = this.quill.getText();
-          if (html === "<p><br></p>") html = "";
-          this._content = html;
-          this.$emit("input", this._content);
-          this.$emit("change", {html, text, quill});
+          // let html = this.$refs.editor.children[0].innerHTML;
+          // const quill = this.quill;
+          // const text = this.quill.getText();
+          // if (html === "<p><br></p>") html = "";
+          // this._content = html;
+          this.$emit("input", this.quill);
+          this.$emit("change", this.quill);
         });
 
         // Emit ready event
@@ -124,27 +122,29 @@ export default {
   },
   watch: {
     // Watch content change
-    content(newVal, oldVal) {
-      if (this.quill) {
-        if (newVal && newVal !== this._content) {
-          this._content = newVal;
-          this.quill.pasteHTML(newVal);
-        } else if (!newVal) {
-          this.quill.setText("");
-        }
-      }
-    },
+    // content(newVal, oldVal) {
+    //   if (this.quill) {
+    //     console.log("content change watched");
+    //     if (newVal && newVal !== this._content) {
+    //       this._content = newVal;
+    //       this.quill.pasteHTML(newVal);
+    //     } else if (!newVal) {
+    //       this.quill.setText("");
+    //     }
+    //   }
+    // },
     // Watch content change
-    value(newVal, oldVal) {
-      if (this.quill) {
-        if (newVal && newVal !== this._content) {
-          this._content = newVal;
-          this.quill.pasteHTML(newVal);
-        } else if (!newVal) {
-          this.quill.setText("");
-        }
-      }
-    },
+    // value(newVal, oldVal) {
+    //   if (this.quill) {
+    //     console.log("value change watched");
+    //     if (newVal && newVal !== this._content) {
+    //       this._content = newVal;
+    //       this.quill.pasteHTML(newVal);
+    //     } else if (!newVal) {
+    //       this.quill.setText("");
+    //     }
+    //   }
+    // },
     // Watch disabled change
     disabled(newVal, oldVal) {
       if (this.quill) {
