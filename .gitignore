@@ -33,6 +33,7 @@ pids
 
 # Package
 package-lock.json
+yarn.lock
 
 # Test
 test/unit/coverage
