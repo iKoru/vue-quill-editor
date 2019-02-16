@@ -1,7 +1,7 @@
 <template>
   <div class="quill-editor">
     <slot name="toolbar"></slot>
-    <div ref="editor" :spellcheck="_options.spellCheck === false?'false':'true'"></div>
+    <div ref="editor" :spellcheck="$el && (_options.spellCheck === false)?'false':'true'"></div>
   </div>
 </template>
 
